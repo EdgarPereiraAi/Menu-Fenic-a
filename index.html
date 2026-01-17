@@ -3,74 +3,65 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzeria Fenicia | Menu Digital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pizzeria Fenicia | Menu Digital Interativo</title>
+    
+    <!-- Meta Tags para SEO e Partilha -->
+    <meta name="description" content="Explore o menu artesanal da Pizzeria Fenicia. Pizzas, massas e especialidades italianas em Tavira. Faça o seu pedido online.">
+    <meta property="og:title" content="Pizzeria Fenicia | Menu Digital">
+    <meta property="og:description" content="Pizzas artesanais, massas e muito mais. Veja o nosso menu e faça o seu pedido via WhatsApp.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=1000">
+    <meta property="og:type" content="website">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --brand-red: #e31b23;
+            --brand-cream: #fdfdfd;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fcfbf7;
-            scroll-behavior: smooth;
+            background-color: var(--brand-cream);
+            -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden;
         }
+        .font-serif { font-family: 'Playfair Display', serif; }
         
-        .font-serif {
-            font-family: 'Playfair Display', serif;
-        }
+        /* Otimização de Performance e Animações */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
 
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 8px;
+        @keyframes kenburns { 
+            0% { transform: scale(1); } 
+            50% { transform: scale(1.1); } 
+            100% { transform: scale(1); } 
         }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #e31b23;
-            border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #c3171e;
-        }
+        .animate-kenburns { animation: kenburns 40s linear infinite; }
 
-        /* Ken Burns Effect */
-        @keyframes kenburns {
-            0% { transform: scale(1) translate(0, 0); }
-            50% { transform: scale(1.15) translate(-1%, -1%); }
-            100% { transform: scale(1) translate(0, 0); }
+        /* Botão flutuante pulsação */
+        @keyframes shadow-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(227, 27, 35, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(227, 27, 35, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(227, 27, 35, 0); }
         }
-        .animate-kenburns {
-            animation: kenburns 30s ease-in-out infinite;
-        }
-
-        /* Subtle floating animation for cards */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-            100% { transform: translateY(0px); }
-        }
-        .hover-float:hover {
-            animation: float 3s ease-in-out infinite;
-        }
+        .pulse-red { animation: shadow-pulse 2s infinite; }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
-  }
-}
-</script>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+      }
+    }
+    </script>
 </head>
 <body>
     <div id="root"></div>
